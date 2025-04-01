@@ -1,0 +1,163 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images\logo.png'%}">
+    <title>About us | QuickPass</title>
+    <link rel="stylesheet" href="{% static 'Styles\abut.css'%}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="{% url 'admin_dashboard' %}"><img src="{% static 'images/logo.png' %}" alt="QuickPass Logo"></a>
+                    <h1>QuickPass</h1>
+                </div>
+                <nav>
+                    <ul class="main-menu">
+                        <li><a href="{% url 'start' %}">Inicio</a></li>
+                        <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Acerca de QuickPass</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Section 01 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-grid">
+                    <div class="section-text">
+                        <h2 style="color: rgb(109, 14, 109);">¿Qué es QuickPass?</h2><br>
+
+                        <p>QuickPass es una solución tecnológica que busca transformar la experiencia en las casetas de carretera. Nuestro sistema automatizado permite el cobro rápido y seguro mediante el uso de códigos QR y reconocimiento de placas vehiculares.</p>
+                        <p>Nuestro sistema está respaldado por tecnologías avanzadas que garantizan un proceso seguro y automatizado, evitando congestiones y mejorando significativamente la experiencia de los usuarios en casetas de peaje.</p>
+                        <p>Con QuickPass, buscamos conseguir un flujo vehicular continuo y una experiencia de usuario sin interrupciones, mejorando tanto la eficiencia en el cobro como la seguridad en el acceso.</p>
+                    </div>
+                    <div class="section-image">
+                        <img src="{% static 'images/toll.png' %}" alt="QuickPass">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 02 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-grid reverse">
+                    <div class="section-text">
+                        <h2 style="color: rgb(109, 14, 109);">¿A qué nos dedicamos?</h2><br>
+                        <p>Como empresa, nos dedicamos a desarrollar soluciones tecnológicas innovadoras para la automatización del cobro de peajes en carreteras, con un enfoque en la eficiencia y seguridad. Nuestro proyecto, QuickPass, permite el cobro de casetas de manera automática mediante un código QR generado en una aplicación, lo que facilita el proceso tanto para los conductores como para los administradores de las casetas.</p>
+                        <p style="font-weight: bold;">Nuestros objetivos son:</p>
+                        <p>- Optimizar el proceso de cobro de peajes, eliminando la necesidad de interacción manual, reduciendo tiempos de espera y mejorando la experiencia del usuario.</p>
+                        <p>- Implementar tecnología de vanguardia como cámaras y sistemas de reconocimiento de placas para automatizar aún más el proceso, con un enfoque en la seguridad y la precisión.</p>
+                        <p>- Aportar innovación en el sector de transporte mediante el uso de tecnologías emergentes, como el uso de QR y el almacenamiento en bases de datos en la nube.</p>
+                    </div>
+                    <div class="section-image">
+                        <img src="{% static 'images/caseta.png' %}" alt="Servicios QuickPass">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 03 -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-grid">
+                    <div class="section-text">
+                        <h2 style="color: rgb(109, 14, 109);">¿Cómo lo hacemos?</h2><br>
+                        <p>a través de la integración de varias tecnologías y soluciones innovadoras que trabajan de manera conjunta para ofrecer una experiencia fluida, segura y eficiente.</p>
+                        <p>Nuestros principales valores son:</p>
+                        <p>- Conocimiento tecnológico en combinación con tecnologías de identificación avanzadas.</p>
+                        <p>- Seguridad hacía los usuarios, su información, transacciones y datos.</p>s
+                        <p>- Ofrecer un producto y servicio que cumpla con las expectativas.</p>
+                        <p>- Compromiso a seguir buscando maneras de eficienciar el sistema.</p>
+                    </div>
+                    <div class="section-image">
+                        <img src="{% static 'images/aprobacion.png' %}" alt="Servicios QuickPass">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Applications -->
+        <section class="applications-section">
+            <div class="container">
+                <h2 style="color: rgb(74, 1, 74);">Conoce al equipo de desarrollo</h2>
+                <div class="applications-grid">
+                    <div class="application-card" style="border-radius: 20px;">
+                        <img src="{% static 'images/gax.jpg' %}" 
+                        style="height: 250px;
+                        border-radius: 20px;
+                        width: 200px;"
+                        /><br><br>
+                        <h3 style="color: rgb(109, 14, 109);">Luis Ángel Gaxiola</h3>
+                        <p>Encargado del desarrollo del sistema de lectura de placas vehículares y código QR.</p>
+                    </div>
+                    <div class="application-card" style="border-radius: 20px;">
+                        <img src="{% static 'images/baca.jpg' %}" 
+                        style="height: 250px;
+                        border-radius: 20px;
+                        width: 200px;"
+                        /><br><br>
+                        <h3 style="color: rgb(109, 14, 109);">Luis Armando Baca</h3>
+                        <p>Responsable de la idea del proyecto. Encargado del desarrollo del protoripo final.</p>
+                    </div>
+                    <div class="application-card" style="border-radius: 20px;">
+                        <img src="{% static 'images/moira.jpg' %}" 
+                        style="height: 250px;
+                        border-radius: 20px;
+                        width: 200px;"
+                        /><br><br>
+                        <h3 style="color: rgb(109, 14, 109);">Moira Villalobos</h3>
+                        <p>Encargada del desarrollo del sitio web dirigido a los administradores.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+    </main>
+
+        <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li>+52 614 111 0147</li>
+                        <li>quickpass@gmail.com</li>
+                    </ul>
+                </div>
+                <p>© 2025 QuickPass - Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/about.js' %}"></script>
+</body>
+</html>

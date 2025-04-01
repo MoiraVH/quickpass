@@ -1,0 +1,312 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Hero section con imagen de fondo */
+.hero {
+    background-image: url("{% static 'images/carretera.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Overlay oscuro para mejorar legibilidad del texto */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Barra de navegación */
+header {
+    position: fixed;
+    background-color: rgba(51, 51, 51, 0.8);
+    padding: 10px 0;
+    position: relative;
+    z-index: 2;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+nav .logo {
+    display: flex;
+    align-items: center;
+}
+
+nav .logo a {
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.logoo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+nav .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+nav .nav-links a:hover {
+    color: #4CAF50;
+}
+
+/* Contenido principal */
+.hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Botones */
+.btn-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: white;
+    color: #333;
+}
+
+.btn-primary {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+    border-color: #45a049;
+    color: white;
+}
+
+/* Sección de información */
+.info-section {
+    background-color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.info-section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature {
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+    margin-bottom: 30px;
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #c1c1c1;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.feature h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* Promociones */
+.promo-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    flex-wrap: wrap;
+}
+
+.promo-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    justify-content: center;
+}
+
+.promo-header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 15px;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.news-header {
+    background-color: #2196F3;
+    color: white;
+    padding: 8px 15px;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .btn-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .feature {
+        min-width: 150px;
+    }
+
+    .feature p{
+        font-weight: bold;
+    }
+}
+
+/* Services Section */
+.services {
+    background-color: #af07ed;
+    padding: 0;
+}
+
+.services .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.service-item {
+    padding: 30px 20px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.service-item:hover {
+    background-color: #9209c5;
+}
+
+.service-item i {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.service-item h3 {
+    font-size: 14px;
+    font-weight: bold;
+}

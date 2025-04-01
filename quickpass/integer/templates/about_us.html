@@ -1,0 +1,94 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="with=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+        <link rel="icon" href="{% static 'images\logo.png'%}">
+        <link rel="stylesheet" href="{% static 'Styles\about.css'%}" />
+        <link rel="stylesheet" href="{% static 'Styles/nav.css'%}">
+        <title>About us | QuickPass</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="nav-logo" style=" align-items: start;">
+                <img src="{% static 'images/logo.png' %}" alt="QuickPass Logo">
+                <a href="{% url 'admin_dashboard' %}">QuickPass</a>
+            </div>
+
+            <div class="nav-links">
+                <a href="/">Inicio</a>
+                <a href="#">Contacto</a>
+                <div class="profile-icon">
+                    <img src="{% static 'images/user-icon.png' %}" alt="Perfil">
+                </div>
+                
+                <a href="{% url 'profile_admin' %}">Perfil</a>
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+        <section class="hero">
+            <h1>Acerca de QuickPass</h1>
+            <p>Una solución innovadora para el acceso rápido y seguro en carreteras.</p>
+        </section>
+
+        <section class="about-section">
+            <div class="text">
+                <h2>Nuestra Misión</h2>
+                <p>QuickPass busca mejorar la eficiencia en el cobro de casetas automáticas mediante tecnología de QR y una gestión digital avanzada.</p>
+            </div>
+            <div class="image">
+                <img src="{% static 'images/bolaamarilla1.jpg' %}"  alt="Nuestra Misión">
+            </div>
+        </section>
+
+        <section class="about-section reverse">
+            <div class="image">
+                <img src="{% static 'images/bolaamarilla2.jpeg' %}"  alt="Cómo Funciona">
+            </div>
+            <div class="text">
+                <h2>Cómo Funciona</h2>
+                <p>Los usuarios generan un código QR en la aplicación, que es escaneado en las casetas para un acceso rápido y sin contacto.</p>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="text">
+                <h2>Impacto y Futuro</h2>
+                <p>Planeamos expandir QuickPass a más autopistas y agregar nuevas funcionalidades como reconocimiento de matrículas y análisis de tráfico en tiempo real.</p>
+            </div>
+            <div class="image">
+                <img src="{% static 'images/bolaamarilla3.jpeg' %}"  alt="Impacto y Futuro">
+            </div>
+        </section>
+
+        <section class="team">
+            <h3>Conoce al Equipo</h3>
+            <div class="team-members">
+                <div class="member">
+                    <img src="{% static 'images/moira.jpg' %}" alt="Moira Villalobos">
+                    <h4>Moira Villalobos</h4>
+                    <p>Desarrolladora</p>
+                </div>
+                <div class="member">
+                    <img src="{% static 'images/gax.jpg' %}" alt="Luis Ángel Gaxiola">
+                    <h4>Luis Ángel Gaxiola</h4>
+                    <p>Desarrollador</p>
+                </div>
+                <div class="member">
+                    <img src="{% static 'images/baca.jpg' %}" alt="Luis Armango Baca">
+                    <h4>Luis Armango Baca</h4>
+                    <p>Desarrollador</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    </body>
+</html>

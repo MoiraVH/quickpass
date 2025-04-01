@@ -1,0 +1,221 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="icon" href="{% static 'images\logo.png'%}">
+    <link rel="stylesheet" href="{% static 'Styles\admin.css'%}" />
+    <link rel="stylesheet" href="{% static 'Styles/nav.css'%}">
+    <title>Admin Page | QuickPass</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="nav-logo" style=" align-items: start;">
+                <img src="{% static 'images/logo.png' %}" alt="QuickPass Logo">
+                <a href="/">QuickPass</a>
+            </div>
+
+            
+            <div class="nav-links">
+                <div>
+                    <ul class="menu_links" >
+    
+                        <li class="menu_item  menu_item--show">
+                            <a href="#" class="menu_link">Acciones rápidas <img src="{% static 'assets/arrow.svg' %}" class="menu_arrow"> </a>
+                            
+                            <ul class="menu_nesting">
+                                <li class="menu_inside">
+                                    <a href="#" class="menu_link menu_link--inside">Imprimir reporte diario</a>
+                                </li>
+                                <li class="menu_inside">
+                                    <a href="#" class="menu_link menu_link--inside">Solicitar mantenimiento</a>
+                                </li>
+                                <li class="menu_inside">
+                                    <a href="#" class="menu_link menu_link--inside">Notificar recoleción de pago</a>
+                                </li>
+                                <li class="menu_inside">
+                                    <a href="{% url 'logout' %}" class="menu_link menu_link--inside">Cerrar turno</a>
+                                </li>
+                                <li class="menu_inside">
+                                    <a href="#" class="menu_link menu_link--inside" style="color: red;">Reporte de emergencia</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul> 
+                </div>
+
+                <a href="{% url 'about' %}">Acerca de</a>
+                
+                <a href="{% url 'profile_admin' %}">Perfil</a>
+                <a href="{% url 'logout' %}" style="color: rgb(221, 150, 150);">Cerrar sesión</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="head_container">
+            <h1 style="font-size: 45px; color: rgb(41, 28, 53); font-weight: bolder;">Bienvenido a Quick-Pass caseta #8{{ request.session.numCaseta }}</h1><br>
+            <p style="font-size: 25px; font-weight: 300px;">Sistema de administración de casetas de peaje</p>
+        </div>
+
+        <div class="container">
+            <div class="left-section">
+                
+                <div class="graph">
+                    <div class="info-section">
+                        <div>
+                            <h2 style="font-size: 30px; color: rgb(41, 28, 53); font-weight: bolder;">Accesos de Caseta</h2><br>
+                            
+                            <div class="metric">
+                                <div class="metric-value">{{ accesos_mes }}</div>
+                                <div class="metric-label" style="margin-right: 15px; font-weight: bolder; font-size: 20px; color: rgb(36, 6, 63);">Aprobados este mes</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">{{ accesos_hoy }}</div>
+                                <div class="metric-label" style="margin-right: 15px; font-weight: bolder; font-size: 20px; color: rgb(36, 6, 63);">Aprobados hoy</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value" style="color: red;">{{ accesos_denegados_mes }}</div>
+                                <div class="metric-label" style="margin-right: 15px; font-weight: bolder; font-size: 20px; color: rgb(36, 6, 63);">Denegados este mes</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value" style="color: red;">{{ accesos_denegados_dia }}</div>
+                                <div class="metric-label" style="margin-right: 15px; font-weight: bolder; font-size: 20px; color: rgb(36, 6, 63);">Denegado(s) hoy</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h2 style="font-size: 30px; color: rgb(41, 28, 53); font-weight: bolder;">Pagos de Caseta </h><br><br>
+
+                            <div class="metric">
+                                <div class="metric-value" style="color: green;">{{ ingresos_hoy }}</div>
+                                <div class="metric-label" style="margin-right: 15px; font-weight: bold; font-size: 20px; color: rgb(36, 6, 63);">Ingresos del día de hoy</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value" style="color: green;">{{ ingresos_mes }}</div>
+                                <div class="metric-label" style="margin-right: 15px; font-weight: bold; font-size: 20px; color: rgb(36, 6, 63);">Ingresos de este mes</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br><br><hr><br><br>
+
+                    <div id="overlay"></div>
+
+                    <div style="align-items: center;"><h2 style="font-size: 30px; color: rgb(41, 28, 53); font-weight: bolder; text-align: center;">Gráficos de accesos</h2></div><br><br>
+
+    
+                    <div class="charts-grid">
+                        <!-- Gráfico 1 -->
+                        <div class="chart-container" onclick="expandChart(this)">
+                            <div class="close-btn">✕</div>
+                            <iframe 
+                                
+                                src="https://charts.mongodb.com/charts-project-0-nrhaall/embed/charts?id=fa19a2d6-4772-4e58-bfb0-c264f84ed78d&maxDataAge=3600&theme=light&autoRefresh=true">
+                            </iframe>
+                        </div>
+
+                        <!-- Gráfico 2 -->
+                        <div class="chart-container" onclick="expandChart(this)">
+                            <div class="close-btn">✕</div>
+                            <iframe 
+                                src="https://charts.mongodb.com/charts-project-0-nrhaall/embed/charts?id=e5b7d2a3-6f44-40c8-aed0-7023cbf0c248&maxDataAge=3600&theme=light&autoRefresh=true">
+                            </iframe>
+                        </div>
+                    </div>
+                    <br><br>
+                    
+                    
+                        <button style="border-radius: 15px; align-self: center; color: rgb(232, 214, 249); width: 500px;">
+                            <a href="{% url 'access_report' %}" > 
+                                <p style="color: antiquewhite;">Ver reporte mensual</p>
+                            </a>
+                        </button>
+
+                </div>
+            </div>
+
+            <div class="right-section">
+                <div class="card">
+                    <h2>Estado de la caseta {{ request.session.numCaseta }}</h2><br><br>
+                    <div class="status">
+                        <div class="status-indicator status-active"></div>
+                        <div>Sistema operativo</div>
+                    </div>
+                    <div class="status">
+                        <div class="status-indicator status-active"></div>
+                        <div>Conexión a la red</div>
+                    </div>
+                    <div class="status">
+                        <div class="status-indicator status-active"></div>
+                        <div>Lector QR</div>
+                    </div>
+                    <div class="status">
+                        <div class="status-indicator status-active"></div>
+                        <div>Cámara</div>
+                    </div><br><br>
+                    <button style="border-radius: 15px; align-self: center; color: rgb(232, 214, 249);">
+                        <a href="#" > 
+                            <p style="color: antiquewhite;">Ver diagnóstico completo</p>
+                        </a>
+                    </button>
+                </div>
+
+                <br><br><br>
+
+                <div class="card">
+                    <h2>Precios de la caseta {{ request.session.numCaseta }}</h2>
+                    <br>
+                    <label for="motorcycle-price">Motocicleta</label>
+                    <input type="number" id="motorcycle-price" value="25.00" min="0" step="0.50"><br><br>
+
+                    <label for="car-price">Automóvil</label>
+                    <input type="number" id="car-price" value="120.00" min="0" step="0.50"><br><br>
+
+                    <label for="truck-price">Camioneta</label>
+                    <input type="number" id="truck-price" value="120.00" min="0" step="0.50"><br><br>
+
+                    <label for="bus-price">Autobús</label>
+                    <input type="number" id="bus-price" value="150.00" min="0" step="0.50"><br><br>
+                    <button style="border-radius: 15px; align-self: center; color: rgb(232, 214, 249);">
+                        <a href="#" > 
+                            <p style="color: antiquewhite;">Modificar precios</p>
+                        </a>
+                    </button>
+                </div>
+            </div>
+
+            </div>
+
+            
+
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Quick-Pass Sistema de Gestión de Casetas. Todos los derechos reservados.</p>
+    </footer>
+
+    {% block extra_js %}
+    <script>
+        document.getElementById('downloadReportBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            
+            try {
+                window.location.href = "{% url 'access_report' %}";
+            } catch (error) {
+                console.error('Error al descargar el informe:', error);
+                alert('Error al descargar el informe');
+            }
+        });
+    </script>
+    {% endblock %}
+
+    <script src="{% static 'js/admin.js' %}"></script>
+</body>
+</html>

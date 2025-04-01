@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/logo.png'%}">
+    <title>Casetas Disponibles | QuickPass</title>
+    <link rel="stylesheet" href="{% static 'Styles/nav.css'%}">
+    <link rel="stylesheet" href="{% static 'Styles/profiles.css'%}">
+    <link rel="stylesheet" href="{% static 'Styles/casetas.css'%}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-logo">
+                <img src="{% static 'images/logo.png' %}" alt="QuickPass Logo">
+                <a href="{% url 'admin_dashboard' %}">QuickPass</a>
+            </div>
+            <div class="nav-links">
+                <a href="{% url 'admin_dashboard' %}">Inicio</a>
+                <a href="#">Acerca de</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Casetas Disponibles</h1>
+        
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <div class="casetas-container">
+            {% if casetas %}
+                {% for caseta in casetas %}
+                <div class="caseta-card" data-caseta-id="{{ caseta.numCaseta }}">
+                    <div class="caseta-header">
+                        <h2 class="caseta-title">Caseta #{{ caseta.numCaseta }}</h2>
+                        <span class="caseta-status {{ caseta.estado|lower }}">{{ caseta.estado }}</span>
+                    </div>
+                    <div class="caseta-body">
+                        <p><strong>Ubicación:</strong> {{ caseta.ubicacion }}</p>
+                        <p><strong>Encargado:</strong> {{ caseta.encargado }}</p>
+                        <p><strong>Teléfono:</strong> {{ caseta.celCaseta }}</p>
+                        <p><strong>Control:</strong> {{ caseta.controlE }}</p>
+                    </div>
+                    <div class="caseta-footer">
+                        <form method="post" action="{% url 'casetas_list' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="numCaseta" value="{{ caseta.numCaseta }}">
+                            <button type="submit" name="seleccionar_caseta" class="btn select-btn">Seleccionar caseta</button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="no-casetas">
+                    <p>No hay casetas disponibles en este momento.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="{% static 'js/casetas.js' %}"></script>
+</body>
+</html>

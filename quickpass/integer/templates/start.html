@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickPass - Tu Acceso Rápido</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'images/logo.png' %}">
+    <link rel="stylesheet" href="{% static 'Styles/start.css'%}" />
+    <style>
+        /* Hero section con imagen de fondo */
+        .hero {
+            background-image: url("{% static 'images/carretera.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            position: relative;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Overlay oscuro para mejorar legibilidad del texto */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        /* Animaciones */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .fade-in-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Efecto de hover */
+        .feature:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        /* Estilos para las secciones */
+        .promo-section, .info-section {
+            padding: 50px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .promo-card, .feature {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .promo-card .btn-container, .feature-icon img {
+            margin-bottom: 15px;
+        }
+
+        /* Estilo para las imágenes */
+        .feature-icon img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+
+        h3 {
+            font-weight: bolder;
+        }
+
+        p {
+            font-weight: bold;
+        }
+
+        /* Para las animaciones de las secciones de "features" */
+        .fade-in-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="hero ">
+        <header>
+            <nav>
+                <div class="logo">
+                    <a href="/">
+                        <img class="logoo" src="{% static 'images/logo.png' %}" alt="QuickPass Logo">
+                    </a>
+                    <a href="/">QuickPass</a>
+                </div>
+                <div class="nav-links">
+                    <a href="{% url 'about' %}">Nosotros</a>
+                    <a href="{% url 'login' %}">Iniciar Sesión</a>
+                </div>
+            </nav>
+        </header>
+        
+        <div class="hero-content">
+            <h1>Agilizamos tu acceso</h1>
+            <p>para que disfrutes el recorrido</p>
+            
+            <div class="additional-info">
+                <p>Con QuickPass olvídate de las largas filas de pago y obtén un acceso rápido a las autopistas del estado.</p>
+            </div>
+            
+            <p>Empieza con <strong>QuickPass</strong> hoy.</p>
+            
+            <div class="btn-container">
+                <a href="https://drive.google.com/drive/folders/1UrkNPylnyrpn_AsL6R2vDfcl9VYoc8TT?usp=drive_link" class="btn">Adquirir aplicación</a>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <div class="promo-section fade-in">
+        <div class="promo-card fade-in">
+            <h3 style="text-align: center; font-weight: bolder;">TRANSPARENCIA</h3>
+            <p style="text-align: center;">Costos claros y datos reales al alcance de todos, garantizando una gestión confiable y accesible.</p>
+        </div>
+        
+        <div class="promo-card fade-in">
+            <h3 style="text-align: center; font-weight: bolder;">EFICIENCIA</h3>
+            <p style="text-align: center;">Optimización de tiempos y recursos, evitando largas filas y agilizando el proceso de cobro de manera efectiva.</p>
+        </div>
+    </div>
+    
+    <div class="info-section fade-in">
+        <h2 style="font-size: 45px; color: rgb(41, 28, 53); font-weight: bolder;">Una solución a tu medida</h2>
+        
+        <div class="features">
+            <div class="feature fade-in">
+                <div class="feature-icon">
+                    <img src="{% static 'images/mision.png' %}" alt="M">
+                </div>
+                <h3 style="margin-right: 15px; font-weight: bold; font-size: 20px; color: rgb(73, 19, 121);">Misión</h3>
+                <p style="color: rgb(131, 106, 154);">
+                    "Revolucionar el pago de peajes mediante tecnología inteligente, 
+                    brindando comodidad, rapidez y eficiencia a los conductores."
+                </p>
+            </div>
+            
+            <div class="feature fade-in">
+                <div class="feature-icon">
+                    <img src="{% static 'images/vision.png' %}" alt="V">
+                </div>
+                <h3 style="margin-right: 15px; font-weight: bold; font-size: 20px; color: rgb(73, 19, 121);">Visión</h3>
+                <p style="color: rgb(131, 106, 154);">
+                    "Ser la empresa líder en automatización de peajes, 
+                    transformando la experiencia de pago en las carreteras a nivel global."
+                </p>
+            </div>
+            
+            <div class="feature fade-in">
+                <div class="feature-icon">
+                    <img src="{% static 'images/valores.png' %}" alt="V">
+                </div>
+                <h3 style="margin-right: 15px; font-weight: bold; font-size: 20px; color: rgb(73, 19, 121);">Valores</h3>
+                <p style="color: rgb(131, 106, 154);">
+                    "Innovación, eficiencia, confianza y compromiso con la sostenibilidad 
+                    y la experiencia del usuario."
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Contacto: contacto@quickpass.com</p>
+            <p>© 2025 QuickPass - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/start.js' %}"></script>
+</body>
+</html>

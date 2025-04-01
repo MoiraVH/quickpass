@@ -1,0 +1,98 @@
+{% load static %}
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="with=device-width, initial-scale=1.0">
+            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+            <link rel="icon" href="{% static 'images\logo.png'%}">
+            <link rel="stylesheet" href="{% static 'Styles\login.css'%}" />
+            <link rel="stylesheet" href="{% static 'Styles\nav.css'%}" />
+            <title>Login Page | QuickPass</title>
+
+            <style>
+                body {
+                background-image: url("{% static 'images/carretera.jpg' %}");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                }
+            
+            </style>
+            
+        </head>
+
+        <body>
+            <header>
+                <nav>
+                    <div class="nav-logo">
+                        <img src="{% static 'images/logo.png' %}" alt="QuickPass Logo">
+                        <a href="/">QuickPass</a>
+                    </div>
+                    <div class="nav-links">
+                        <a href="/">Inicio</a>
+                        <a href="#">Acerca de</a>
+                    </div>
+                </nav>
+            </header>
+
+        <main>
+            <div class="container" id="container">
+                <div class="form-container sign-up">
+                    <form method="POST" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <h1 style="color: rgb(68, 2, 68)">Crea una cuenta</h1>
+                        
+                        <div class="social-icons"> 
+                            <!--social images-->
+                        </div>
+                        <input type="text" id="name" name="name" placeholder="Nombre">
+                        <input type="text" id="lastname" name="lastname" placeholder="Apellido">
+                        <input type="email" id="email" name="email" placeholder="Correo">
+                        <input type="text" id="phone" name="phone" placeholder="Número telefónico">
+                        <input type="text" id="location" name="location" placeholder="Lugar de residencia">
+                        <input type="password" id="password" name="password" placeholder="Contraseña">
+                        <input type="password" id="confirmpass" name="confirm_password" placeholder="Confirmar contraseña">
+                        <input type="hidden" name="register_submit" value="1">  <!-- Identificador de registro -->
+                        <button type="submit">Registrate</button>
+                    </form>
+                </div>
+                <div class="form-container sign-in">
+                    <form method="POST" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <h1 style="color: rgb(68, 2, 68)">Inicio de sesión</h1>
+                        <div class="social-icons">
+                            <!--social images-->
+                        </div>
+                        <input type="text" id="email" name="email" placeholder="Correo">
+                        <input type="password" id="pass" name="password" placeholder="Contraseña">
+                        <a href="#">¿Olvidaste tu contraseña?</a>
+                        <input type="hidden" name="login_submit" value="1">  <!-- Identificador de login -->
+                        <button type="submit">Ingresa</button>
+                    </form>
+                </div>
+                <div class="toggle-container">
+                    <div class="toggle">
+                        <div class="toggle-panel toggle-left">
+                            <img src="{% static 'images/logo.png' %}" alt="logo"><br>
+                            <h1>QUICKPASS</h1>
+                            <p style="font-size: 16px;">Su acceso rápido y seguro a todas las vías</p>
+                            <h2>¡BIENVENIDO!</h2><br><br><br>
+                            <button class="hidden" id="login">Ingresa</button>
+                        </div>
+                        <div class="toggle-panel toggle-right">
+                            <img src="{% static 'images/logo.png' %}" alt="logo"><br>
+                            <h1>QUICKPASS</h1>
+                            <p style="font-size: 16px;">Su acceso rápido y seguro a todas las vías</p>
+                            <h2>¡HOLA DE NUEVO!</h2><br><br><br>
+                            <button class="hidden" id="register">Registrate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </main>
+            
+        <script src="{% static 'Styles/style.js' %}"></script>
+        </body>
+        </html>
