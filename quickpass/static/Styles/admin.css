@@ -1,4 +1,6 @@
-
+html, body{
+    width: 90%;
+}
 
 h1 {
     margin: 0;
@@ -9,7 +11,7 @@ h1 {
     display: flex;
     justify-content: space-between; /* Distribuye espacio entre elementos */
     gap: 20px; /* Espacio entre columnas */
-    width: 100%;
+    width: 90%;
     min-height: 100vh;
     padding: 20px; /* Añade espacio interno */
     box-sizing: border-box; /* Incluye padding en el ancho total */
